@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 题目解析助手</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- 左侧输入区域 -->
+        <div class="input-panel">
+            <div class="panel-header">
+                <span class="icon">🎓</span>
+                <h2>题目输入</h2>
+            </div>
+            
+            <div class="input-section">
+                <label class="section-label">在此输入文字题目或补充说明</label>
+                <textarea 
+                    id="questionInput" 
+                    class="question-textarea" 
+                    placeholder="请输入题目内容，例如：小明有36张邮票，小红邮票的数量是小明的3倍，小红比小明多几张邮票？"
+                ></textarea>
+            </div>
+
+            <div class="upload-section">
+                <label class="section-label">或者上传一张题目照片</label>
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M4 16L4 17C4 18.6569 5.34315 20 7 20L17 20C18.6569 20 20 18.6569 20 17L20 16" stroke="#86868b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M12 4V14M12 4L8 8M12 4L16 8" stroke="#86868b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <p class="upload-text">拖拽文件到此处上传</p>
+                    <p class="upload-hint">支持 PNG, JPG, JPEG 格式，最大 200MB</p>
+                    <button class="browse-btn" id="browseBtn">浏览文件</button>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+                <div class="preview-area" id="previewArea" style="display: none;">
+                    <img id="previewImage" src="" alt="预览图片">
+                    <button class="remove-btn" id="removeBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <button class="analyze-btn" id="analyzeBtn">
+                <span class="btn-icon">🚀</span>
+                启动 AI 深度解析
+            </button>
+
+            <div class="status-area" id="statusArea" style="display: none;">
+                <div class="status-icon">
+                    <div class="loading-spinner"></div>
+                </div>
+                <span class="status-text" id="statusText">正在进行多模态学术逻辑推导...</span>
+            </div>
+        </div>
+
+        <!-- 右侧解析结果区域 -->
+        <div class="result-panel">
+            <div class="panel-header">
+                <span class="icon">🎓</span>
+                <h2>导师解析面板</h2>
+            </div>
+            
+            <div class="result-content" id="resultContent">
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                            <path d="M12 6V12L16 14" stroke="#86868b" stroke-width="1.5" stroke-linecap="round"/>
+                            <circle cx="12" cy="12" r="9" stroke="#86868b" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <p class="empty-text">等待输入题目...</p>
+                    <p class="empty-hint">输入题目文字或上传题目图片，点击解析按钮开始</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Markdown 解析库 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- 代码高亮库 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/styles/github.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/core.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/languages/javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/highlight.js@11.9.0/lib/languages/python.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
